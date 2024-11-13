@@ -15,8 +15,9 @@ export default function Form() {
   function handleAddTask() {
     // Effettuo il dispatch: passo i nuovi dati al reducer,
     // che si occuperà di aggiornare l'elenco di task
+    console.log("cliccato");
     dispatch({
-      type: "delete",
+      type: "added",
       id: nanoid(),
       name: inputRef.current.value,
     });

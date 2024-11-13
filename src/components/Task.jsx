@@ -1,5 +1,23 @@
+import { useContext } from "react";
+import { TasksDispatchContext } from "../TasksContext";
+
 export default function Task({ taskDetails }) {
-  // ricevo i dettagli del task (id, name, isCompleted)
+  const dispatch = useContext(TasksDispatchContext);
+
+  function deleteTask(taskId) {
+    dispatch({
+      type: "deleted",
+      id: taskId,
+    });
+  }
+
+  function toggleTaskCompletion(taskId) {
+    dispatch({
+      type: "toggled",
+      id: taskId,
+    });
+  }
+
   return (
     <li
       className={`my-2  p-2 rounded-md flex justify-between items-center ${
@@ -10,15 +28,12 @@ export default function Task({ taskDetails }) {
         <input
           type="checkbox"
           checked={taskDetails.isCompleted}
-          // onChange={() => updateTaskCompletion(taskDetails.id)}
+          onChange={() => toggleTaskCompletion(taskDetails.id)}
         />
         <span>{taskDetails.name}</span>
       </div>
       {/* <button className="btn">Modifica</button> */}
-      <button
-        className="btn"
-        // onClick={() => deleteTask(taskDetails.id)}
-      >
+      <button className="btn" onClick={() => deleteTask(taskDetails.id)}>
         Elimina
       </button>
     </li>
