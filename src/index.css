@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  /* se vogliamo creare una classe CSS che comprende una serie di utility Tailwind possiamo utilizzare la direttiva @apply */
+  .mio-pulsante {
+    @apply rounded-md hover:bg-sky-800 hover:text-white bg-green-300 py-2 px-4;
+  }
+}
+
+.btn {
+  background-color: lightblue;
+  padding: 0.5rem 1rem;
+}
